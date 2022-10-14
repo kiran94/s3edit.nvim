@@ -6,8 +6,7 @@ on:
       - main
   pull_request:
 jobs:
-  unit_tests:
-    name: unit tests
+  test:
     runs-on: ${{ matrix.os }}
     timeout-minutes: 10
     strategy:

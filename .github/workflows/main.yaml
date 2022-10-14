@@ -13,12 +13,12 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - id: neovim nightly ubuntu
+          - id: Neovim Nightly Ubuntu
             os: ubuntu-20.04
             url: https://github.com/neovim/neovim/releases/download/nightly/nvim-linux64.tar.gz
             manager: sudo apt-get
             packages: -y ripgrep
-          - id: neovim 0.8 ubuntu
+          - id: Neovim 0.8 Ubuntu
             os: ubuntu-20.04
             url: https://github.com/neovim/neovim/releases/download/v0.8.0/nvim-linux64.tar.gz
             manager: sudo apt-get

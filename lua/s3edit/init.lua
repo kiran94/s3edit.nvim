@@ -47,8 +47,7 @@ M.edit = function()
             temp_file = utils.trim(temp_file)
             temp_file = temp_file .. ext
 
-            -- print("Downloading " .. selected_bucket .. "/" .. selected_object .. " -> " .. temp_file)
-
+            vim.notify("Downloading " .. selected_bucket .. "/" .. selected_object)
             s3.download_object(selected_bucket, selected_object, temp_file)
 
             vim.api.nvim_command("edit" .. temp_file)

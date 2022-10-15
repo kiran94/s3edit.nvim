@@ -14,6 +14,7 @@ M.create_upload_s3_autocommand = function(command, bucket, key, target_file)
         group = M.autogroup_name,
         desc = "Uploads file contents back to S3",
         callback = function()
+            vim.notify("Updating s3://" .. bucket .. "/" .. key)
             s3.put_object(bucket, key, target_file)
         end,
     })

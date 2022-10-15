@@ -4,21 +4,12 @@ local s3 = require("s3edit.s3")
 local auto = require("s3edit.autocommand")
 local utils = require("s3edit.utils")
 local system = require("s3edit.system")
+local plugin_settings = require("s3edit.settings")
 
 local settings = {}
-local default_settings = {
-    exclude = { ".git" },
-    autocommand_events = { "BufWritePost" },
-}
-
-local resolve_settings = function(user_settings)
-    user_settings = user_settings or {}
-    settings = vim.tbl_extend("keep", user_settings, default_settings)
-    return settings
-end
 
 M.setup = function(user_settings)
-    settings = resolve_settings(user_settings)
+    settings = plugin_settings.resolve(user_settings)
     auto.create_group()
 end
 

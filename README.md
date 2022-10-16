@@ -48,4 +48,4 @@ require('s3edit').edit() -- or :S3Edit
 
 ### Preview
 
-<script id="asciicast-529113" src="https://asciinema.org/a/529113.js" async></script>
+[![asciicast](https://asciinema.org/a/529113.svg)](https://asciinema.org/a/529113)

@@ -23,6 +23,8 @@ Setup the plugin
 require('s3edit').setup()
 ```
 
+#### Configuration
+
 By default the following configuration will apply: 
 
 ```lua
@@ -32,7 +34,13 @@ require('s3edit').setup({
 }
 ```
 
-Run Edit:
+| Option               | Description                              |
+| -------              | -----------                              |
+| `exclude`            | File paths to exclude from object search |
+| `autocommand_events` | The event to fire updates to S3          |
+
+
+#### Edit
 
 ```lua
 require('s3edit').edit() -- or :S3Edit

@@ -49,3 +49,13 @@ jobs:
           export VIM="${PWD}/_neovim/share/nvim/runtime"
           nvim --version
           make test
+  release:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    needs: [test]
+    steps:
+      - name: Release
+        uses: go-semantic-release/action@v1
+        if: github.ref == 'refs/heads/main'
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}

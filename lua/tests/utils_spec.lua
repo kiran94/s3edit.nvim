@@ -28,6 +28,8 @@ describe("trim", function()
         ["/path/temp.json"] = "/path/temp.json",
         [" /path/temp.json"] = "/path/temp.json",
         [" /path/temp.json "] = "/path/temp.json",
+        ["temp"] = "temp",
+        [""] = "",
     }
 
     for input, output in pairs(trim_cases) do
@@ -36,4 +38,9 @@ describe("trim", function()
             assert.are.same(output, actual)
         end)
     end
+
+    it("should return empty on nil input", function()
+        local actual = utils.trim(nil)
+        assert.are.same("", actual)
+    end)
 end)

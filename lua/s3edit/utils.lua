@@ -5,6 +5,10 @@ M.get_file_extension = function(file)
 end
 
 M.trim = function(s)
+    if s == nil then
+        return ""
+    end
+
     return s:match("^%s*(.-)%s*$")
 end
 

@@ -1,5 +1,22 @@
 local mock = require("luassert.mock")
 
+describe("setup", function()
+    local s3edit = require("s3edit")
+    local auto = require("s3edit.autocommand")
+    local plugin_settings = require("s3edit.settings")
+
+    it("should setup command", function()
+        local mock_auto = mock(auto, true)
+        mock_auto.create_group.returns({})
+
+        s3edit.setup()
+
+        local command = vim.api.nvim_get_commands({}).S3Edit
+        assert.is_not_nil(command)
+        assert.stub(mock_auto.create_group).was_called_with()
+    end)
+end)
+
 describe("s3edit_select_object", function()
     local s3 = require("s3edit.s3")
     local auto = require("s3edit.autocommand")

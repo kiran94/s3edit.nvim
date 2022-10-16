@@ -50,6 +50,8 @@ require('s3edit').edit() -- or :S3Edit
 
 [![asciicast](https://asciinema.org/a/529113.svg)](https://asciinema.org/a/529113)
 
+*NOTE: if you want to use telescope as your selector then take a look at [telescope-ui-select.nvim](https://github.com/nvim-telescope/telescope-ui-select.nvim)*
+
 ### Similar
 
 - [s3-edit](https://github.com/tsub/s3-edit)

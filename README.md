@@ -29,7 +29,7 @@ By default the following configuration will apply:
 
 ```lua
 require('s3edit').setup({
-    exclude = { ".git" },
+    exclude = { ".git", ".hoodie", ".parquet", ".zip" },
     autocommand_events = { "BufWritePost" },
 }
 ```

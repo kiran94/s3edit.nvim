@@ -28,6 +28,11 @@ M.get_objects = function(bucket)
         return {}
     end
 
+    if result == '' then
+        vim.notify("No objects found within s3://" .. bucket)
+        return {}
+    end
+
     result = vim.fn.json_decode(result)
 
     local objects = {}

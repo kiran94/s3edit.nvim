@@ -91,6 +91,18 @@ describe("get_objects", function()
         assert.are.same("path/key2", result[2])
         assert.stub(mock_sys.make_system_call).was_called_with("aws s3api list-objects --bucket my_bucket")
     end)
+
+    it("should return empty when no objects are found", function()
+        local mock_list_object_result = ""
+
+        local mock_sys = mock(sys, true)
+        mock_sys.make_system_call.returns(mock_list_object_result)
+
+        local result = s3.get_objects("my_bucket")
+        assert.are.same({}, result)
+
+        assert.stub(mock_sys.make_system_call).was_called_with("aws s3api list-objects --bucket my_bucket")
+    end)
 end)
 
 describe("download_object", function()

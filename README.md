@@ -49,3 +49,7 @@ require('s3edit').edit() -- or :S3Edit
 ### Preview
 
 [![asciicast](https://asciinema.org/a/529113.svg)](https://asciinema.org/a/529113)
+
+### Similar
+
+- [s3-edit](https://github.com/tsub/s3-edit)

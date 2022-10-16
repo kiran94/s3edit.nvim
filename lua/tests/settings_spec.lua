@@ -25,7 +25,7 @@ describe("resolve", function()
             autocommand_events = { "BufWritePre" },
         })
 
-        assert.are.same({ ".git" }, resolved.exclude)
+        assert.are.same({ ".git", ".hoodie", ".parquet", ".zip" }, resolved.exclude)
         assert.are.same({ "BufWritePre" }, resolved.autocommand_events)
     end)
 end)

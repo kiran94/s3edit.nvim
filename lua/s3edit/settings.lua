@@ -1,7 +1,7 @@
 local M = {}
 
 M.default_settings = {
-    exclude = { ".git" },
+    exclude = { ".git", ".hoodie", ".parquet", ".zip" },
     autocommand_events = { "BufWritePost" },
 }
 

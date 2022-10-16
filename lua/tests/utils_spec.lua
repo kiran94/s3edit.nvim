@@ -44,3 +44,23 @@ describe("trim", function()
         assert.are.same("", actual)
     end)
 end)
+
+describe("filter", function()
+    it("should filter by the excludes", function()
+        local input = { ".git/hello", "needle", ".hello", "test.py" }
+        local excludes = { ".git" }
+
+        local output = utils.filter(input, excludes)
+
+        assert.are.same({ "needle", ".hello", "test.py" }, output)
+    end)
+
+    it("should return everything on empty excludes", function()
+        local input = { ".git/hello", "needle", ".hello", "test.py" }
+        local excludes = {}
+
+        local output = utils.filter(input, excludes)
+
+        assert.are.same(input, output)
+    end)
+end)

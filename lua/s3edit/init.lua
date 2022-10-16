@@ -37,6 +37,8 @@ M.edit = function()
 
     vim.ui.select(names, { prompt = "select bucket" }, function(selected_bucket)
         local objects = s3.get_objects(selected_bucket)
+        objects = utils.filter(objects, settings.exclude)
+
         vim.ui.select(objects, { prompt = "select object" }, function(selected_object)
             M._select_object(selected_bucket, selected_object)
         end)
@@ -44,8 +46,3 @@ M.edit = function()
 end
 
 return M
-
--- -- TODO: Add configuration option for blacklisting files (exclude files)
--- vim.tbl_filter(function(o)
---     -- if o matches any of the patterns in settings.exclude then filter out
--- end, objects)

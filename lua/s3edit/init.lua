@@ -11,6 +11,7 @@ local settings = {}
 M.setup = function(user_settings)
     settings = plugin_settings.resolve(user_settings)
     auto.create_group()
+    vim.cmd([[ command! S3Edit lua require('s3edit').edit() ]])
 end
 
 M._select_object = function(selected_bucket, selected_object)

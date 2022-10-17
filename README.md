@@ -15,6 +15,8 @@ use 'kiran94/s3edit.nvim'
 - [`aws`](https://github.com/aws/aws-cli) in your `PATH` and configured
 - Neovim 0.8+
 
+Once installed you can run a health check via `:checkhealth s3edit`
+
 ### Usage
 
 Setup the plugin

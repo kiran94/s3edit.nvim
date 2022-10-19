@@ -7,7 +7,7 @@
 ## Install
 
 ```lua
-use 'kiran94/s3edit.nvim' 
+use 'kiran94/s3edit.nvim'
 ```
 
 ### Dependencies
@@ -27,7 +27,7 @@ require('s3edit').setup()
 
 #### Configuration
 
-By default the following configuration will apply: 
+By default the following configuration will apply:
 
 ```lua
 require('s3edit').setup({

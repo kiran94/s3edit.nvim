@@ -1,0 +1,72 @@
+s3edit.txt
+
+================================================================================
+CONTENTS                                                         *s3edit-contents*
+
+1. S3Edit.nvim................................................|s3edit-s3edit.nvim|
+    1.1. Install..................................................|s3edit-install|
+        1.1.1. Dependencies..................................|s3edit-dependencies|
+        1.1.2. Usage................................................|s3edit-usage|
+            1.1.2.1. Configuration..........................|s3edit-configuration|
+            1.1.2.2. Edit............................................|s3edit-edit|
+        1.1.3. Preview............................................|s3edit-preview|
+        1.1.4. Similar............................................|s3edit-similar|
+
+================================================================================
+S3EDIT.NVIM                                                   *s3edit-s3edit.nvim*
+
+[](https://github.com/kiran94/s3edit.nvim/actions/workflows/main.yaml)
+>
+    Edit files from S3 directly from Neovim
+<
+
+--------------------------------------------------------------------------------
+INSTALL                                                           *s3edit-install*
+>
+    use 'kiran94/s3edit.nvim'
+<
+
+DEPENDENCIES                                                 *s3edit-dependencies*
+
+*   `aws` (https://github.com/aws/aws-cli) in your `PATH` and configured
+*   Neovim 0.8+
+
+Once installed you can run a health check via `:checkhealth s3edit`
+
+USAGE                                                               *s3edit-usage*
+
+Setup the plugin
+>
+    require('s3edit').setup()
+<
+
+CONFIGURATION                                               *s3edit-configuration*
+
+By default the following configuration will apply:
+>
+    require('s3edit').setup({
+        exclude = { ".git", ".hoodie", ".parquet", ".zip" },
+        autocommand_events = { "BufWritePost" },
+    }
+<
+
+| Option               | Description                              |
+| -------              | -----------                              |
+| `exclude`            | File paths to exclude from object search |
+| `autocommand_events` | The event to fire updates to S3          |
+
+EDIT                                                                 *s3edit-edit*
+>
+    require('s3edit').edit() -- or :S3Edit
+<
+
+PREVIEW                                                           *s3edit-preview*
+
+[](https://asciinema.org/a/529113)
+
+NOTE: if you want to use telescope as your selector then take a look at telescope-ui-select.nvim (https://github.com/nvim-telescope/telescope-ui-select.nvim)
+
+SIMILAR                                                           *s3edit-similar*
+
+*   s3-edit (https://github.com/tsub/s3-edit)
+

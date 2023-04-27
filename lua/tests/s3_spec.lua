@@ -10,7 +10,7 @@ describe("get_bucket_names", function()
         local result = s3.get_bucket_names()
 
         assert.are.same({}, result)
-        assert.stub(mock_sys.make_system_call).was_called_with("aws s3api list-buckets")
+        assert.stub(mock_sys.make_system_call).was_called_with("aws s3api list-buckets --output json")
     end)
 
     it("should parse the bucket names", function()
@@ -39,7 +39,7 @@ describe("get_bucket_names", function()
 
         assert.are.same("bucket1", result[1])
         assert.are.same("bucket2", result[2])
-        assert.stub(mock_sys.make_system_call).was_called_with("aws s3api list-buckets")
+        assert.stub(mock_sys.make_system_call).was_called_with("aws s3api list-buckets --output json")
     end)
 end)
 
@@ -51,7 +51,7 @@ describe("get_objects", function()
         local result = s3.get_objects("my_bucket")
 
         assert.are.same({}, result)
-        assert.stub(mock_sys.make_system_call).was_called_with("aws s3api list-objects --bucket my_bucket")
+        assert.stub(mock_sys.make_system_call).was_called_with("aws s3api list-objects --bucket my_bucket --output json")
     end)
 
     it("should parse the objects", function()
@@ -89,7 +89,7 @@ describe("get_objects", function()
 
         assert.are.same("key1", result[1])
         assert.are.same("path/key2", result[2])
-        assert.stub(mock_sys.make_system_call).was_called_with("aws s3api list-objects --bucket my_bucket")
+        assert.stub(mock_sys.make_system_call).was_called_with("aws s3api list-objects --bucket my_bucket --output json")
     end)
 
     it("should return empty when no objects are found", function()
@@ -101,7 +101,7 @@ describe("get_objects", function()
         local result = s3.get_objects("my_bucket")
         assert.are.same({}, result)
 
-        assert.stub(mock_sys.make_system_call).was_called_with("aws s3api list-objects --bucket my_bucket")
+        assert.stub(mock_sys.make_system_call).was_called_with("aws s3api list-objects --bucket my_bucket --output json")
     end)
 end)
 

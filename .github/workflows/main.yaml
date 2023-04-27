@@ -18,6 +18,11 @@ jobs:
             url: https://github.com/neovim/neovim/releases/download/nightly/nvim-linux64.tar.gz
             manager: sudo apt-get
             packages: -y ripgrep
+          - id: Neovim 0.9
+            os: ubuntu-20.04
+            url: https://github.com/neovim/neovim/releases/download/v0.9.0/nvim-linux64.tar.gz
+            manager: sudo apt-get
+            packages: -y ripgrep
           - id: Neovim 0.8
             os: ubuntu-20.04
             url: https://github.com/neovim/neovim/releases/download/v0.8.0/nvim-linux64.tar.gz

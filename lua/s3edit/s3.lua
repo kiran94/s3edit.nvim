@@ -4,7 +4,7 @@ local sys = require("s3edit.system")
 --- Gets the Bucket Names from S3
 ---@return table a list of bucket names
 M.get_bucket_names = function()
-    local result = sys.make_system_call("aws s3api list-buckets")
+    local result = sys.make_system_call("aws s3api list-buckets --output json")
     if result == nil then
         return {}
     end
@@ -23,7 +23,7 @@ end
 ---@param bucket string the bucket to search
 ---@return table a list of objects
 M.get_objects = function(bucket)
-    local result = sys.make_system_call("aws s3api list-objects --bucket " .. bucket)
+    local result = sys.make_system_call("aws s3api list-objects --bucket " .. bucket .. " --output json")
     if result == nil then
         return {}
     end

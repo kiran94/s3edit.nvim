@@ -7,8 +7,10 @@
 ## Install
 
 ```lua
-use 'kiran94/s3edit.nvim'
+{ 'kiran94/s3edit.nvim', config = true, cmd = "S3Edit"},
 ```
+
+*using lazy.nvim*
 
 ### Dependencies
 

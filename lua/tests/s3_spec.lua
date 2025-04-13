@@ -122,13 +122,13 @@ end)
 describe("put_object", function()
     it("should make a s3 api put object system call", function()
         local mock_sys = mock(sys, true)
-        mock_sys.make_system_call.returns({})
+        mock_sys.make_system_call.on_call_with("aws s3api head-object --bucket my_bucket --key my_key --query ContentType --output text").returns('application/json')
 
         local result = s3.put_object("my_bucket", "my_key", "infile")
 
         assert.are.same({}, result)
         assert
             .stub(mock_sys.make_system_call)
-            .was_called_with("aws s3api put-object --bucket my_bucket --key my_key --body infile")
+            .was_called_with("aws s3api put-object --bucket my_bucket --key my_key --body infile --content-type 'application/json'")
     end)
 end)

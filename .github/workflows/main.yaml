@@ -13,11 +13,11 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - id: Neovim Nightly
-            os: ubuntu-20.04
-            url: https://github.com/neovim/neovim/releases/download/nightly/nvim-linux64.tar.gz
-            manager: sudo apt-get
-            packages: -y ripgrep
+          # - id: Neovim Nightly
+          #   os: ubuntu-20.04
+          #   url: https://github.com/neovim/neovim/releases/download/nightly/nvim-linux64.tar.gz
+          #   manager: sudo apt-get
+          #   packages: -y ripgrep
           - id: Neovim 0.9
             os: ubuntu-20.04
             url: https://github.com/neovim/neovim/releases/download/v0.9.0/nvim-linux64.tar.gz
@@ -30,12 +30,12 @@ jobs:
             packages: -y ripgrep
     steps:
       - uses: actions/checkout@v2
-      - run: date +%F > todays-date
-      - name: Restore from todays cache
-        uses: actions/cache@v2
-        with:
-          path: _neovim
-          key: ${{ runner.os }}-${{ matrix.url }}-${{ hashFiles('todays-date') }}
+      # - run: date +%F > todays-date
+      # - name: Restore from todays cache
+      #   uses: actions/cache@v2
+      #   with:
+      #     path: _neovim
+      #     key: ${{ runner.os }}-${{ matrix.url }}-${{ hashFiles('todays-date') }}
       - name: Prepare
         run: |
           ${{ matrix.manager }} update

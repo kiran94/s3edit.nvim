@@ -30,12 +30,12 @@ jobs:
             packages: -y ripgrep
     steps:
       - uses: actions/checkout@v2
-      - run: date +%F > todays-date
-      - name: Restore from todays cache
-        uses: actions/cache@v2
-        with:
-          path: _neovim
-          key: ${{ runner.os }}-${{ matrix.url }}-${{ hashFiles('todays-date') }}
+      # - run: date +%F > todays-date
+      # - name: Restore from todays cache
+      #   uses: actions/cache@v2
+      #   with:
+      #     path: _neovim
+      #     key: ${{ runner.os }}-${{ matrix.url }}-${{ hashFiles('todays-date') }}
       - name: Prepare
         run: |
           ${{ matrix.manager }} update

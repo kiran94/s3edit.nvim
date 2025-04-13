@@ -130,6 +130,6 @@ describe("put_object", function()
         assert.are.same({}, result)
         assert
             .stub(mock_sys.make_system_call)
-            .was_called_with("aws s3api put-object --bucket my_bucket --key my_key --body infile")
+            .was_called_with("aws s3api put-object --bucket my_bucket --key my_key --body infile --content-type application/json")
     end)
 end)

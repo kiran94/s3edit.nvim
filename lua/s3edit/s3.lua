@@ -49,11 +49,7 @@ end
 
 local function get_content_type(bucket, key)
     local cmd = "aws s3api head-object --bucket " .. bucket .. " --key " .. key .. " --query ContentType --output text"
-    local handle = io.popen(cmd)
-    if not handle then return nil end
-
-    local content_type = handle:read("*a")
-    handle:close()
+    local content_type = make_system_call(cmd)
 
     return content_type:gsub("^%s+", ""):gsub("%s+$", "")
 end

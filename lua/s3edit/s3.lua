@@ -47,8 +47,30 @@ M.download_object = function(bucket, key, outfile)
     return sys.make_system_call("aws s3api get-object --bucket " .. bucket .. " --key " .. key .. " " .. outfile)
 end
 
+local function get_content_type(bucket, key)
+    local cmd = "aws s3api head-object --bucket " .. bucket .. " --key " .. key .. " --query ContentType --output text"
+    local handle = io.popen(cmd)
+    if not handle then return nil end
+
+    local content_type = handle:read("*a")
+    handle:close()
+
+    return content_type:gsub("^%s+", ""):gsub("%s+$", "")
+end
+
 M.put_object = function(bucket, key, infile)
-    return sys.make_system_call("aws s3api put-object --bucket " .. bucket .. " --key " .. key .. " --body " .. infile)
+    local content_type = get_content_type(bucket, key)
+    if not content_type or content_type == "" then
+        vim.notify("Failed to retrieve Content-Type; aborting put-object.")
+        return false
+    end
+
+    local cmd = "aws s3api put-object --bucket " .. bucket ..
+                " --key " .. key ..
+                " --body " .. infile ..
+                " --content-type '" .. content_type .. "'"
+
+    return sys.make_system_call(cmd)
 end
 
 return M
